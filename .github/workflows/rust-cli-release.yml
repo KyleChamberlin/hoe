@@ -14,7 +14,7 @@ jobs:
   release:
     uses: KyleChamberlin/.github/workflows/rust/release.yml@main
     with:
-      bin: name-of-bin
+      bin: hoe
     secrets:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
