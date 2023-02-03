@@ -1,0 +1,14 @@
+name: Rust Check
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  audit:
+    uses: KyleChamberlin/.github/workflows/rust/check.yml@main
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
