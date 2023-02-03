@@ -7,6 +7,10 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  actions: read
+  security-events: write
+
 jobs:
   audit:
     uses: KyleChamberlin/.github/.github/workflows/rust-check.yml@main
