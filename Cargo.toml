@@ -1,0 +1,16 @@
+[package]
+name = "hoe"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+description = "A hoe to help manage your personal digital garden"
+repository = "https://github.com/kylechamberlin/hoe"
+homepage = "https://docs.rs/hoe"
+readme = "README.md"
+
+[dependencies]
+clap = "4.0.0"
+
+[profile.release]
+strip = true
+lto = true
