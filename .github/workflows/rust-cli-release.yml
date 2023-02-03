@@ -1,0 +1,22 @@
+name: Release
+
+on:
+  push:
+    tags:
+    - '*'
+  workflow_dispatch:
+  
+permissions:
+  packages: write
+  contents: write
+
+jobs:
+  release:
+    uses: KyleChamberlin/.github/workflows/rust/release.yml@main
+    with:
+      bin: name-of-bin
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+
