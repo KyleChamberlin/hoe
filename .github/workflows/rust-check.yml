@@ -9,6 +9,6 @@ on:
 
 jobs:
   audit:
-    uses: KyleChamberlin/.github/workflows/rust/check.yml@main
+    uses: KyleChamberlin/.github/workflows/rust-check.yml@main
     secrets:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

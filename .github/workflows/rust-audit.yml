@@ -15,6 +15,6 @@ permissions: read-all
 
 jobs:
   audit:
-    uses: KyleChamberlin/.github/workflows/rust/audit.yml@main
+    uses: KyleChamberlin/.github/workflows/rust-audit.yml@main
     secrets:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

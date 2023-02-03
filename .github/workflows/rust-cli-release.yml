@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   release:
-    uses: KyleChamberlin/.github/workflows/rust/release.yml@main
+    uses: KyleChamberlin/.github/workflows/rust-release.yml@main
     with:
       bin: hoe
     secrets:
