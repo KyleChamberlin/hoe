@@ -8,8 +8,16 @@ repository = "https://github.com/kylechamberlin/hoe"
 homepage = "https://docs.rs/hoe"
 readme = "README.md"
 
+[[bin]]
+name = "hoe"
+path = "src/main.rs"
+
+[lib]
+name = "hoe_lib"
+path = "src/lib.rs"
+
 [dependencies]
-clap = "4.0.0"
+clap = { version = "4.0.0", features = ["derive", "debug", "env", "string"] }
 
 [profile.release]
 strip = true
