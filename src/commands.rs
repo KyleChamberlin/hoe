@@ -1,10 +1,15 @@
+mod new;
+
 use clap::Subcommand;
+
+pub use new::new;
 
 #[derive(Debug, Subcommand)]
 pub enum Commands {
-    New,
+    New(new::Args),
     List,
-    Edit,
-    Remove,
-    Garden,
+    Tag,
+    Publish,
+    Update,
+    Manage,
 }
