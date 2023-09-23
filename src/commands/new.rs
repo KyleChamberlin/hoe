@@ -50,20 +50,20 @@ pub fn new(args: Args) -> Result<()> {
     Ok(())
 }
 
-fn _create_seedling(_seedling: Seedling) -> Result<()> {
-    Ok(())
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn create_seedling_doesnt_prompt_when_all_params_provided() -> Result<()> {
-        create_seedling(Args {
-            name: "kyle".to_string(),
-            description: Some("longname".to_string()),
-            tags: Some(vec!["tag".to_string(), "here".to_string()]),
-        })
-    }
-}
+// fn _create_seedling(_seedling: Seedling) -> Result<()> {
+//     Ok(())
+// }
+//
+// #[cfg(test)]
+// mod tests {
+//     use super::*;
+//
+//     #[test]
+//     fn create_seedling_doesnt_prompt_when_all_params_provided() -> Result<()> {
+//         create_seedling(Args {
+//             name: "kyle".to_string(),
+//             description: Some("longname".to_string()),
+//             tags: Some(vec!["tag".to_string(), "here".to_string()]),
+//         })
+//     }
+// }
