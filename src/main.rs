@@ -22,6 +22,9 @@ fn main() -> Result<()> {
     let args = Args::parse();
 
     println!("hk test 123");
+    println!("hk test 123");
+    println!("hk test 123");
+    println!("hk test 123");
 
     match args.command {
         None => interactive_mode(),
