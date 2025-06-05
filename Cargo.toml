@@ -21,6 +21,7 @@ chrono = { version = "0.4.23", features = ["serde"] }
 clap = { version = "4.0.0", features = ["derive", "env", "string"] }
 color-eyre = "0.6.2"
 ctrlc = { version = "3.2.4", features = ["termination"] }
+demand = "1.7.0"
 inquire = { version = "0.5.3", features = ["editor", "tempfile"] }
 slugify = "0.1.0"
 tera = "1.17.1"

@@ -1,12 +1,10 @@
-mod new;
+pub mod new;
 
 use clap::Subcommand;
 
-pub use new::new;
-
 #[derive(Debug, Subcommand)]
-pub enum Commands {
-    New(new::Args),
+pub enum Command {
+    New(new::ProvidedArgs),
     List,
     Tag,
     Publish,

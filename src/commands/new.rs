@@ -1,17 +1,27 @@
 use chrono::{DateTime, Utc};
 use clap::Parser;
 use color_eyre::eyre::Result;
-use inquire::Text;
 use slugify::slugify;
 
+use crate::prompt;
+
 #[derive(Debug, Parser)]
-pub struct Args {
+pub struct ProvidedArgs {
     name: String,
+    #[arg(short, long)]
     description: Option<String>,
+    #[arg(short, long)]
     tags: Option<Vec<String>>,
 }
 
 #[derive(Debug)]
+pub struct Args {
+    name: String,
+    description: String,
+    tags: Vec<String>,
+}
+
+#[derive(Debug, Eq, PartialEq)]
 struct Seedling {
     title: String,
     slug: String,
@@ -22,27 +32,16 @@ struct Seedling {
     tags: Vec<String>,
 }
 
-pub fn new(args: Args) -> Result<()> {
+pub fn new(p_args: ProvidedArgs) -> Result<()> {
+    let args = resolve_new_args(p_args);
     let _seedling = Seedling {
         title: args.name.to_string(),
         slug: slugify!(&args.name),
         created: Utc::now(),
         updated: Utc::now(),
-        description: match args.description {
-            Some(desc) => desc,
-            None => match Text::new("Description for new seedling:").prompt_skippable()? {
-                Some(desc) => desc,
-                None => String::new(),
-            },
-        },
+        description: args.description,
         revision: 0,
-        tags: match args.tags {
-            Some(tags) => tags,
-            None => match Text::new("tags:").prompt_skippable()? {
-                Some(_) => todo!("parse tag list"),
-                None => Vec::with_capacity(0),
-            },
-        },
+        tags: args.tags,
     };
 
     dbg!(_seedling);
@@ -50,6 +49,22 @@ pub fn new(args: Args) -> Result<()> {
     Ok(())
 }
 
+fn resolve_new_args(new_args: ProvidedArgs) -> Args {
+    Args {
+        name: match Some(new_args.name) {
+            None => prompt::seedling::name(),
+            Some(name) => name,
+        },
+        description: match new_args.description {
+            None => prompt::seedling::description(),
+            Some(description) => description,
+        },
+        tags: match new_args.tags {
+            None => prompt::seedling::tags(),
+            Some(tags) => tags,
+        },
+    }
+}
 // fn _create_seedling(_seedling: Seedling) -> Result<()> {
 //     Ok(())
 // }

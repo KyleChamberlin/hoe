@@ -1,0 +1,4 @@
+[tools]
+pkl = "latest"
+rust = "latest"
+hk = "latest"
