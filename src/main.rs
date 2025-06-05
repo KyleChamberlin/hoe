@@ -1,3 +1,5 @@
+use std::path::PathBuf;
+
 use clap::Parser;
 use color_eyre::Result;
 use hoe_lib::commands::{
@@ -9,7 +11,9 @@ use hoe_lib::commands::{
 #[command(author, version, about)]
 struct Args {
     #[command(subcommand)]
-    command: commands::Command,
+    command: Option<commands::Command>,
+    #[arg(short, long)]
+    config: Option<PathBuf>,
 }
 
 fn main() -> Result<()> {
@@ -17,10 +21,8 @@ fn main() -> Result<()> {
 
     let args = Args::parse();
 
-    dbg!(&args);
-
-    match Some(args.command) {
-        None => todo!(),
+    match args.command {
+        None => interactive_mode(),
         Some(command) => match command {
             New(new_args) => commands::new::new(new_args)?,
             List => todo!(),
@@ -34,13 +36,6 @@ fn main() -> Result<()> {
     Ok(())
 }
 
-fn resolve_command(command: Option<commands::Command>) -> commands::Command {
-    match command {
-        None => choose_command(),
-        Some(c) => c,
-    }
-}
-
-fn choose_command() -> commands::Command {
-    todo!()
+fn interactive_mode() {
+    print!("interactive mode is not currently supported.")
 }
