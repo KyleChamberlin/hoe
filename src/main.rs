@@ -24,8 +24,8 @@ fn main() -> Result<()> {
     match args.command {
         None => interactive_mode(),
         Some(command) => match command {
-            New(new_args) => commands::new::new(new_args)?,
-            List => todo!(),
+            New(new_args) => commands::new(new_args)?,
+            List => commands::list()?,
             Tag => todo!(),
             Publish => todo!(),
             Update => todo!(),

@@ -1,4 +1,8 @@
-pub mod new;
+mod list;
+mod new;
+
+pub use list::list;
+pub use new::new;
 
 use clap::Subcommand;
 
