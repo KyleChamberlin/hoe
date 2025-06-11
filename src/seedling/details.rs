@@ -1,9 +1,10 @@
 use chrono::{DateTime, Utc};
+use serde::{Deserialize, Serialize};
 use tabled::Tabled;
 
-#[derive(Tabled, Debug, Eq, PartialEq)]
+#[derive(Tabled, Debug, Eq, PartialEq, Deserialize, Serialize)]
 pub struct Details {
-    name: String,
+    title: String,
     created: DateTime<Utc>,
     #[tabled(display = "display_updated")]
     updated: Option<DateTime<Utc>>,
@@ -17,18 +18,18 @@ pub struct Details {
 
 fn display_author(o: &Option<String>) -> String {
     match o {
-        Some(s) => format!("is valid thing = {}", s),
-        None => format!("is not valid"),
+        Some(s) => s.to_string(),
+        None => "".to_string(),
     }
 }
 
 fn display_updated(updated: &Option<DateTime<Utc>>) -> String {
     match updated {
         Some(time) => format!("{:?}", time),
-        None => format!(""),
+        None => String::new(),
     }
 }
 
-fn display_tags(tags: &Vec<String>) -> String {
+fn display_tags(tags: &[String]) -> String {
     tags.join(";")
 }

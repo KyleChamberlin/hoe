@@ -46,19 +46,19 @@ pub fn list() -> Result<()> {
     Ok(())
 }
 
-fn frontmatter_to_seedling_details(_frontmatter: String) -> seedling::Details {
-    todo!()
+fn frontmatter_to_seedling_details(frontmatter: String) -> seedling::Details {
+    serde_yaml::from_str(&frontmatter).expect("all seedlings should have valid frontmatter")
 }
 
 fn extract_frontmatter(_file_contents: String) -> Option<String> {
     Some(
         r###"
     title: The Title of the seedling
-    desciption: A long and perfect description.
+    description: A long and perfect description.
     created: 2025-06-06T12:54:44.045320785Z
-    author: 
-
-    created = 
+    author: Kyle Chamberlin
+    tags: 
+    slug: seedling_slug
     "###
         .to_string(),
     )

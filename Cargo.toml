@@ -22,8 +22,8 @@ clap = { version = "4.0.0", features = ["derive", "env", "string"] }
 color-eyre = "0.6.2"
 ctrlc = { version = "3.2.4", features = ["termination"] }
 demand = "1.7.0"
-inquire = { version = "0.5.3", features = ["editor", "tempfile"] }
 serde = { version = "1.0.219", features = ["derive", "serde_derive"] }
+serde_yaml = "0.9.34"
 slugify = "0.1.0"
 tabled = { version = "0.20.0", features = ["ansi"] }
 tera = "1.17.1"
